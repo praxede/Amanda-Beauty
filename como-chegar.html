@@ -28,26 +28,37 @@
   <main class="page">
     <div class="site-container">
 
-      <article class="card">
+      <article class="card fade-in-up">
 
-        <h1 class="page-title fade-in-up">Como Chegar</h1>
+        <h1 class="page-title">Como Chegar</h1>
 
-        <p class="lead fade-in-up">
-          Veja abaixo a localização do espaço e encontre a melhor rota até aqui.
+        <p class="lead">
+          Venha nos visitar no endereço abaixo.  
+          Estamos localizados em uma região de fácil acesso:
+        </p>
+
+        <p style="font-size: 1.2rem; font-weight: 600; color:#b87272; margin-bottom: 20px;">
+          📍 R. Salvador Leite Marques, 510 – Sala 2 – Éden
         </p>
 
         <!-- MAPA -->
         <iframe 
           width="100%" 
           height="350"
-          style="border:0; border-radius: 12px; margin-top: 20px;"
+          style="border:0; border-radius: 12px;"
           loading="lazy"
           allowfullscreen
-          src="https://www.google.com/maps/embed/v1/place?key=SUA_CHAVE_AQUI&q=Sao+Paulo">
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.401837538035!2d-47.410000!3d-23.622000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c5f5b8b0a22bbd%3A0x9f8ff042a71a64c6!2sR.%20Salvador%20Leite%20Marques%2C%20510%20-%20%C3%89den%2C%20Sorocaba!5e0!3m2!1spt-BR!2sbr!4v1700860000000!5m2!1spt-BR!2sbr">
         </iframe>
 
-        <div class="fade-in-up" style="margin-top: 25px;">
-          <a href="index.html" class="btn">Voltar ao Início</a>
+        <div style="margin-top: 25px;">
+          <a href="https://www.google.com/maps/search/?api=1&query=R.%20Salvador%20Leite%20Marques%2C%20510%20-%20Sala%202%20-%20%C3%89den" 
+             class="btn" 
+             target="_blank">
+            Abrir no Google Maps
+          </a>
+
+          <a href="index.html" class="btn btn-ghost">Voltar ao Início</a>
         </div>
 
       </article>
@@ -55,7 +66,7 @@
     </div>
   </main>
 
-  <!-- FOOTER automático -->
+  <!-- FOOTER AUTOMÁTICO -->
   <div id="footer"></div>
   <script>
     fetch("footer.html")
