@@ -105,11 +105,12 @@ nav a:hover {
   width: 350px;
   height: 350px;
   border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: cover;       /* preenche o círculo */
+  object-position: center; /* centraliza o rosto e o corpo */
   margin-bottom: 25px;
   border: 4px solid #e7d3d3;
 }
+
 
 
 /* Título */
