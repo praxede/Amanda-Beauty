@@ -47,16 +47,42 @@ body {
   align-items: center;
 }
 
-
 .logo {
   font-family: 'Great Vibes', cursive;
   font-size: 3rem;
   font-weight: normal;
-  color: #c08f8f; /* rosé elegante da sua paleta */
+  color: #c08f8f;
   text-decoration: none;
   letter-spacing: 1px;
 }
 
+/* -------------------------
+   NAVEGAÇÃO
+---------------------------*/
+nav {
+  background: #ffffff;
+  padding: 14px 0;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border-bottom: 1px solid #eadeda;
+  position: sticky;
+  top: 80px; /* abaixo do header */
+  z-index: 9;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #5a4a4a;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #c98e8e;
+  transform: translateY(-2px);
+}
 
 /* -------------------------
    ÁREA DA PÁGINA
@@ -83,7 +109,6 @@ body {
   margin-bottom: 25px;
   border: 4px solid #e7d3d3;
 }
-
 
 /* Título */
 .page-title {
@@ -159,6 +184,11 @@ body {
    RESPONSIVIDADE
 ---------------------------*/
 @media (max-width: 600px) {
+  nav a {
+    margin: 0 8px;
+    font-size: 0.9rem;
+  }
+
   .card {
     padding: 25px;
   }
