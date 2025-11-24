@@ -72,5 +72,65 @@
 <script type="module">
   import { db } from "../firebase-config.js";
   import {
-    collection, query, w
+    collection, query, where, onSnapshot, doc, updateDoc
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
+  const dataInput = document.getElementById("data");
+  const lista = document.getElementById("lista");
+
+  dataInput.addEventListener("change", () => {
+    carregarAgenda(dataInput.value);
+  });
+
+  function carregarAgenda(dataEscolhida) {
+    lista.innerHTML = "<tr><td colspan='5'>Carregando...</td></tr>";
+
+    const agRef = collection(db, "agendamentos");
+    const q = query(agRef, where("data", "==", dataEscolhida));
+
+    onSnapshot(q, (snap) => {
+      lista.innerHTML = "";
+
+      if (snap.empty) {
+        lista.innerHTML = "<tr><td colspan='5'>Nenhum agendamento</td></tr>";
+        return;
+      }
+
+      snap.forEach((docItem) => {
+        const a = docItem.data();
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${a.hora}</td>
+          <td>${a.nome} <br> <small>${a.telefone}</small></td>
+          <td>${a.servico}</td>
+          <td>${a.status}</td>
+          <td>
+            <button class="confirmar">Confirmar</button>
+            <button class="atendido">Atendido</button>
+            <button class="falta">Falta</button>
+          </td>
+        `;
+
+        const btnConfirmar = tr.querySelector(".confirmar");
+        const btnAtendido = tr.querySelector(".atendido");
+        const btnFalta = tr.querySelector(".falta");
+
+        btnConfirmar.onclick = () => atualizar(docItem.id, "confirmado");
+        btnAtendido.onclick = () => atualizar(docItem.id, "atendido");
+        btnFalta.onclick = () => atualizar(docItem.id, "falta");
+
+        lista.appendChild(tr);
+      });
+    });
+  }
+
+  async function atualizar(id, status) {
+    const ref = doc(db, "agendamentos", id);
+    await updateDoc(ref, { status });
+    alert("Status atualizado!");
+  }
+</script>
+
+</body>
+</html>
