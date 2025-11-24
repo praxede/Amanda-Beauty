@@ -78,6 +78,73 @@
   <button onclick="confirmar()">Confirmar Agendamento</button>
 </div>
 
-<script>
+<script type="module">
+  import { db } from "./firebase-config.js";
+  import { 
+    collection, addDoc, query, where, getDocs 
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+  const servico = document.getElementById("servico");
+  const dataInput = document.getElementById("data");
   const horarioSelect = document.getElementById("horario");
-  const dataInput = document.getEl
+  const nome = document.getElementById("nome");
+  const telefone = document.getElementById("telefone");
+
+  // HORÁRIOS FIXOS POR ENQUANTO
+  const horariosFixos = ["08:00","09:00","10:00","13:00","14:00","15:00","16:00"];
+
+  // Quando escolhe a data → cria lista de horários
+  dataInput.addEventListener("change", () => {
+    horarioSelect.innerHTML = "";
+    horariosFixos.forEach(h => {
+      const opt = document.createElement("option");
+      opt.value = h;
+      opt.textContent = h;
+      horarioSelect.appendChild(opt);
+    });
+  });
+
+  async function confirmar() {
+    const s = servico.value;
+    const d = dataInput.value;
+    const h = horarioSelect.value;
+    const n = nome.value.trim();
+    const t = telefone.value.trim();
+
+    if (!s || !d || !h || !n || !t) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+
+    const agRef = collection(db, "agendamentos");
+
+    // Verifica se já existe agendamento nesse dia/hora
+    const q = query(agRef, 
+      where("data", "==", d),
+      where("hora", "==", h)
+    );
+
+    const snap = await getDocs(q);
+
+    if (!snap.empty) {
+      alert("Este horário já está ocupado. Escolha outro.");
+      return;
+    }
+
+    // Salvar agendamento
+    await addDoc(agRef, {
+      servico: s,
+      data: d,
+      hora: h,
+      nome: n.toUpperCase(),
+      telefone: t,
+      status: "pendente",
+      criadoEm: new Date()
+    });
+
+    alert("Agendamento realizado com sucesso! ✔");
+    window.location.href = "index.html";
+  }
+
+  window.confirmar = confirmar;
+</script>
