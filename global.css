@@ -102,13 +102,15 @@ nav a:hover {
 
 /* Foto do perfil */
 .profile-photo {
-  width: 400px;
-  height: 400px;
+  width: 350px;        /* tamanho grande do círculo */
+  height: 350px;
   border-radius: 50%;
-  object-fit: cover;
+  object-fit: cover;   /* preenche o círculo */
+  object-position: center; /* rosto centralizado */
   margin-bottom: 25px;
   border: 4px solid #e7d3d3;
 }
+
 
 
 
