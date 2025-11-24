@@ -90,10 +90,8 @@
   const nome = document.getElementById("nome");
   const telefone = document.getElementById("telefone");
 
-  // HORÁRIOS FIXOS POR ENQUANTO
   const horariosFixos = ["08:00","09:00","10:00","13:00","14:00","15:00","16:00"];
 
-  // Quando escolhe a data → cria lista de horários
   dataInput.addEventListener("change", () => {
     horarioSelect.innerHTML = "";
     horariosFixos.forEach(h => {
@@ -109,29 +107,38 @@
     const d = dataInput.value;
     const h = horarioSelect.value;
     const n = nome.value.trim();
-    const t = telefone.value.trim();
+    const t = telefone.value.trim().replace(/\D/g, "");
 
     if (!s || !d || !h || !n || !t) {
       alert("Preencha todos os campos!");
       return;
     }
 
-    const agRef = collection(db, "agendamentos");
-
-    // Verifica se já existe agendamento nesse dia/hora
-    const q = query(agRef, 
-      where("data", "==", d),
-      where("hora", "==", h)
-    );
-
-    const snap = await getDocs(q);
-
-    if (!snap.empty) {
-      alert("Este horário já está ocupado. Escolha outro.");
+    if (t.length < 10) {
+      alert("Telefone inválido!");
       return;
     }
 
-    // Salvar agendamento
+    const hoje = new Date();
+    const dataEscolhida = new Date(d + " " + h);
+
+    if (dataEscolhida < hoje) {
+      alert("Você não pode agendar para um horário no passado!");
+      return;
+    }
+
+    const agRef = collection(db, "agendamentos");
+    const q = query(agRef,
+      where("data", "==", d),
+      where("hora", "==", h)
+    );
+    const snap = await getDocs(q);
+
+    if (!snap.empty) {
+      alert("Este horário já está ocupado!");
+      return;
+    }
+
     await addDoc(agRef, {
       servico: s,
       data: d,
@@ -142,7 +149,7 @@
       criadoEm: new Date()
     });
 
-    alert("Agendamento realizado com sucesso! ✔");
+    alert("Agendamento realizado com sucesso!");
     window.location.href = "index.html";
   }
 
