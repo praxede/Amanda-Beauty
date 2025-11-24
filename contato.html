@@ -20,28 +20,30 @@
     <a href="admin/">Admin</a>
   </nav>
 
-  <main>
-    <div class="card">
-      <h2>Contato</h2>
-      <p>Fale comigo para tirar dúvidas, agendar procedimentos ou saber mais sobre meus serviços.</p>
+  <main class="page">
+    <div class="site-container">
+      <article class="card">
+        <h1 class="page-title fade-in-up">Contato</h1>
 
-      <div class="contact-buttons">
-        <a class="btn" href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
-        <a class="btn" href="https://instagram.com/" target="_blank">Instagram</a>
-      </div>
+        <p class="lead fade-in-up">
+          Fale comigo para tirar dúvidas, agendar procedimentos ou saber mais sobre meus serviços.<br>
+          <strong>Siga também minhas redes sociais!</strong>
+        </p>
 
-      <form class="contato-form">
-        <label>Nome:</label>
-        <input type="text" name="nome" required>
+        <div class="contact-buttons fade-in-up" style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn" href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+          <a class="btn" href="https://instagram.com/" target="_blank">Instagram</a>
+        </div>
 
-        <label>Telefone:</label>
-        <input type="tel" name="telefone" required>
+        <p class="lead fade-in-up" style="margin-top:20px;">
+          Se preferir, clique no botão abaixo para falar diretamente comigo pelo WhatsApp:
+        </p>
 
-        <label>Mensagem:</label>
-        <textarea name="mensagem" rows="5" required></textarea>
+        <a class="btn fade-in-up" href="https://wa.me/5511999999999?text=Olá%2C+gostaria+de+mais+informações" target="_blank">
+          Falar no WhatsApp
+        </a>
 
-        <button type="submit" class="btn">Enviar</button>
-      </form>
+      </article>
     </div>
   </main>
 
