@@ -3,19 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Serviços</title>
+  <title>Serviços - Amanda Beauty</title>
+  <link rel="stylesheet" href="global.css">
 </head>
 <body>
-  <h1>Serviços</h1>
 
-  <ul>
-    <li>Limpeza de pele</li>
-    <li>Peeling</li>
-    <li>Botox</li>
-    <li>Massagem Relaxante</li>
-  </ul>
+<header class="site-header">
+  <a href="index.html" class="logo">Amanda Beauty</a>
+</header>
 
-  <a href="index.html">Voltar</a>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="quem-somos.html">Quem Sou</a>
+  <a href="servicos.html" class="active">Serviços</a>
+  <a href="contato.html">Contato</a>
+  <a href="como-chegar.html">Como chegar</a>
+  <a href="admin/">Admin</a>
+</nav>
+
+<a href="agendar.html" class="btn" style="display:block; width:max-content; margin:20px auto 0 auto;">Agendar Horário</a>
+
+<main class="page">
+  <div class="site-container">
+
+    <!-- EXEMPLO DE CARD DE SERVIÇO (replicado para cada um) -->
+    <article class="card service-card" style="display:flex; gap:20px; align-items:flex-start;">
+
+      <img src="" alt="Foto do serviço" class="service-photo" style="width:180px; height:auto; border-radius:12px; background:#f3d5d5;">
+
+      <div>
+        <h2 class="card-title">NOME DO SERVIÇO</h2>
+        <p class="lead">Descrição completa do serviço, com todas as informações necessárias.</p>
+        <p class="lead"><strong>Duração:</strong> 1 hora</p>
+        <p class="lead"><strong>Aplicação:</strong> R$ 0,00</p>
+        <p class="lead"><strong>Manutenção:</strong> R$ 0,00</p>
+      </div>
+
+    </article>
+
+    <!-- Os outros cards serão preenchidos por mim quando você confirmar os detalhes finais -->
+
+  </div>
+</main>
+
+<div id="footer"></div>
+<script>
+  fetch("footer.html")
+    .then(res => res.text())
+    .then(html => document.getElementById("footer").innerHTML = html);
+</script>
+
 </body>
 </html>
-
