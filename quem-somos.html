@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quem Somos</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quem Sou - Amanda Beauty</title>
+
+  <!-- usa o seu global.css -->
+  <link rel="stylesheet" href="global.css">
+
+  <!-- Classes usadas abaixo: 
+       .site-header, .page, .card, .profile-photo, .page-title, .lead, .btn
+       Se seus nomes forem diferentes, cole o global.css aqui que eu adapto. -->
 </head>
 <body>
-  <h1>Quem Somos</h1>
-  <p>Aqui vai o texto de apresentação do Espaço de Beleza.</p>
-  <a href="index.html">Voltar</a>
+
+  <header class="site-header">
+    <div class="site-container">
+      <a href="index.html" class="logo">Amanda Beauty</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="page-inner site-container">
+
+      <article class="card about-card" aria-labelledby="quem-sou-title">
+        <img src="foto.jpg" alt="Foto da Amanda" class="profile-photo" />
+
+        <h1 id="quem-sou-title" class="page-title">Quem Sou</h1>
+
+        <p class="lead">
+          Sou profissional da área da beleza há mais de 4 anos. Meu objetivo é levar felicidade e transformação através da autoestima, oferecendo procedimentos que realçam ainda mais a sua beleza.
+        </p>
+
+        <!-- bloco com botões/ações -->
+        <div class="actions">
+          <a href="contato.html" class="btn">Contato</a>
+          <a href="index.html" class="btn btn-ghost">Voltar ao Início</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container">
+      <small>© Amanda Beauty</small>
+    </div>
+  </footer>
+
 </body>
 </html>
-
