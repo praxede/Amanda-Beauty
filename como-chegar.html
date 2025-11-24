@@ -3,25 +3,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Como Chegar</title>
+  <title>Como Chegar - Amanda Beauty</title>
+
+  <link rel="stylesheet" href="global.css">
 </head>
 <body>
 
-<h1>Como Chegar</h1>
+  <!-- HEADER igual ao index -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Amanda Beauty</a>
+  </header>
 
-<p>Endereço do espaço.</p>
+  <!-- NAV igual ao index -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="quem-somos.html">Quem Sou</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="contato.html">Contato</a>
+    <a href="como-chegar.html">Como Chegar</a>
+    <a href="admin/">Admin</a>
+  </nav>
 
-<iframe 
-  width="100%" 
-  height="300"
-  style="border:0"
-  loading="lazy"
-  allowfullscreen
-  src="https://www.google.com/maps/embed/v1/place?key=SUA_CHAVE_AQUI&q=Sao+Paulo">
-</iframe>
+  <!-- CONTEÚDO -->
+  <main class="page">
+    <div class="site-container">
 
-<a href="index.html">Voltar</a>
+      <article class="card">
+
+        <h1 class="page-title fade-in-up">Como Chegar</h1>
+
+        <p class="lead fade-in-up">
+          Veja abaixo a localização do espaço e encontre a melhor rota até aqui.
+        </p>
+
+        <!-- MAPA -->
+        <iframe 
+          width="100%" 
+          height="350"
+          style="border:0; border-radius: 12px; margin-top: 20px;"
+          loading="lazy"
+          allowfullscreen
+          src="https://www.google.com/maps/embed/v1/place?key=SUA_CHAVE_AQUI&q=Sao+Paulo">
+        </iframe>
+
+        <div class="fade-in-up" style="margin-top: 25px;">
+          <a href="index.html" class="btn">Voltar ao Início</a>
+        </div>
+
+      </article>
+
+    </div>
+  </main>
+
+  <!-- FOOTER automático -->
+  <div id="footer"></div>
+  <script>
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("footer").innerHTML = html);
+  </script>
 
 </body>
 </html>
-
