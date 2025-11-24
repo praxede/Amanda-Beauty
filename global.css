@@ -1,26 +1,163 @@
-/* styles/global.css */
-
-/* Fonte fora do padrão */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-:root{
-  --brand: #ff2f92;
-  --bg: #f7f7f7;
-  --text: #333;
+/* =========================
+   RESET E BASE
+   ========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Reset simples */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Configuração global */
-body{
-  background: var(--bg);
+body {
   font-family: "Poppins", sans-serif;
-  color: var(--text);
+  background-color: #faf7f5;
+  color: #4a3f3f;
+  line-height: 1.7;
 }
 
-/* Pode colocar mais coisas aqui depois */
+/* -------------------------
+   CONTAINERS E LAYOUT
+---------------------------*/
+.site-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* -------------------------
+   CABEÇALHO
+---------------------------*/
+.site-header {
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 20px 0;
+  border-bottom: 1px solid #eadeda;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #c08f8f;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+/* -------------------------
+   ÁREA DA PÁGINA
+---------------------------*/
+.page {
+  padding: 60px 0;
+}
+
+.card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  text-align: center;
+  animation: fade-in 0.7s ease-out;
+}
+
+/* Foto do perfil */
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+  border: 4px solid #e7d3d3;
+}
+
+/* Título */
+.page-title {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #b87272;
+}
+
+/* Texto */
+.lead {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #5a4a4a;
+}
+
+/* -------------------------
+   BOTÕES
+---------------------------*/
+.btn {
+  display: inline-block;
+  padding: 12px 26px;
+  font-size: 1rem;
+  border-radius: 50px;
+  background: #c98e8e;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: 500;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+  background: #b67a7a;
+  transform: translateY(-3px);
+}
+
+/* Botão fantasma */
+.btn-ghost {
+  background: transparent;
+  border: 2px solid #c98e8e;
+  color: #c98e8e;
+}
+
+.btn-ghost:hover {
+  background: #c98e8e;
+  color: #fff;
+}
+
+/* -------------------------
+   FOOTER
+---------------------------*/
+.site-footer {
+  text-align: center;
+  padding: 25px 0;
+  background: #f1e8e6;
+  margin-top: 40px;
+}
+
+/* -------------------------
+   ANIMAÇÕES
+---------------------------*/
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-up {
+  animation: fade-in 0.8s ease forwards;
+}
+
+/* -------------------------
+   RESPONSIVIDADE
+---------------------------*/
+@media (max-width: 600px) {
+  .card {
+    padding: 25px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .profile-photo {
+    width: 140px;
+    height: 140px;
+  }
+}
