@@ -1,0 +1,26 @@
+/* styles/global.css */
+
+/* Fonte fora do padrão */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root{
+  --brand: #ff2f92;
+  --bg: #f7f7f7;
+  --text: #333;
+}
+
+/* Reset simples */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* Configuração global */
+body{
+  background: var(--bg);
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+}
+
+/* Pode colocar mais coisas aqui depois */
