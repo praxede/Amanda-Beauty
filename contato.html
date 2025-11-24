@@ -1,16 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato</title>
+  <title>Amanda Beauty - Contato</title>
+  <link rel="stylesheet" href="global.css">
 </head>
 <body>
-  <h1>Contato</h1>
+  <header>
+    <h1>Amanda Beauty</h1>
+  </header>
 
-  <p>📞 Telefone: (11) 99999-9999</p>
-  <p>📧 E-mail: contato@espacodebeleza.com</p>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="quem-sou.html">Quem sou</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="como-chegar.html">Como chegar</a>
+    <a href="contato.html" class="active">Contato</a>
+  </nav>
 
-  <a href="index.html">Voltar</a>
+  <main>
+    <div class="card">
+      <h2>Contato</h2>
+      <p>Fale comigo para tirar dúvidas, agendar procedimentos ou saber mais sobre meus serviços.</p>
+
+      <div class="contact-buttons">
+        <a class="btn" href="https://wa.me/5511999999999" target="_blank">WhatsApp</a>
+        <a class="btn" href="https://instagram.com/" target="_blank">Instagram</a>
+      </div>
+
+      <form class="contato-form">
+        <label>Nome:</label>
+        <input type="text" name="nome" required>
+
+        <label>Telefone:</label>
+        <input type="tel" name="telefone" required>
+
+        <label>Mensagem:</label>
+        <textarea name="mensagem" rows="5" required></textarea>
+
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="ano"></span> Amanda Beauty</p>
+  </footer>
+
+  <script>
+    document.getElementById('ano').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
