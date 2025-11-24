@@ -43,12 +43,14 @@ body {
 }
 
 .logo {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #c08f8f;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  font-weight: normal;
+  color: #c08f8f; /* rosé elegante da sua paleta */
   text-decoration: none;
   letter-spacing: 1px;
 }
+
 
 /* -------------------------
    ÁREA DA PÁGINA
