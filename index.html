@@ -3,66 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Espaço de Beleza - Home</title>
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      background: #f7f7f7;
-    }
-    header {
-      background: #ff69b4;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 22px;
-    }
-    nav {
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,.1);
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: bold;
-      color: #333;
-    }
-    main {
-      padding: 20px;
-      text-align: center;
-    }
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      background: #ff69b4;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-  </style>
+  <title>Amanda Beauty - Home</title>
+
+  <!-- Importa o estilo global rosé -->
+  <link rel="stylesheet" href="global.css">
 </head>
 <body>
 
-<header>Espaço de Beleza</header>
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="index.html" class="logo">Amanda Beauty</a>
+  </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="quem-somos.html">Quem Somos</a>
-  <a href="servicos.html">Serviços</a>
-  <a href="contato.html">Contato</a>
-  <a href="como-chegar.html">Como Chegar</a>
-  <a href="admin/">Admin</a>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="quem-somos.html">Quem Somos</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="contato.html">Contato</a>
+    <a href="como-chegar.html">Como Chegar</a>
+    <a href="admin/">Admin</a>
+  </nav>
 
-<main>
-  <h2>Bem-vindo ao Espaço de Beleza</h2>
-  <p>Cuidado, estética e bem-estar para você.</p>
+  <!-- CONTEÚDO -->
+  <main class="page">
+    <div class="site-container">
 
-  <a class="btn" href="agendar.html">Agendar Horário</a>
-</main>
+      <article class="card">
+        <h1 class="page-title">Bem-vindo ao Amanda Beauty</h1>
+
+        <p class="lead">
+          Um espaço dedicado ao cuidado, à autoestima e à beleza natural.
+          Aqui você encontra qualidade, carinho e profissionalismo em cada atendimento.
+        </p>
+
+        <a class="btn" href="agendar.html">Agendar Horário</a>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <small>© 2025 Amanda Beauty — Todos os direitos reservados.</small>
+    </div>
+  </footer>
 
 </body>
 </html>
