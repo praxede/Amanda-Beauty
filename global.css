@@ -40,7 +40,13 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
+
+  /* CENTRALIZAR A LOGO */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .logo {
   font-family: 'Great Vibes', cursive;
