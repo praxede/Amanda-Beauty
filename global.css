@@ -66,13 +66,14 @@ body {
 
 /* Foto do perfil */
 .profile-photo {
-  width: 180px;
-  height: 180px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 25px;
   border: 4px solid #e7d3d3;
 }
+
 
 /* Título */
 .page-title {
