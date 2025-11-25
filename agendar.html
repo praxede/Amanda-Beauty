@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amanda Beauty - Agendar Horário</title>
 
-  <!-- estilo global -->
+  <!-- seu estilo global -->
   <link rel="stylesheet" href="global.css">
 
   <style>
-    /* GRID DAS 2 COLUNAS */
+    /* Grid duas colunas */
     .agenda-grid {
       display: grid;
       grid-template-columns: 1fr 420px;
@@ -17,33 +17,69 @@
       align-items: flex-start;
       margin-top: 20px;
     }
-
     @media (max-width: 900px) {
-      .agenda-grid {
-        grid-template-columns: 1fr;
-      }
+      .agenda-grid { grid-template-columns: 1fr; }
     }
 
-    /* MODAL */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 900;
-    }
-
-    .modal {
-      background: #fff;
-      padding: 20px;
+    /* Força os campos a ocuparem 100% do espaço do card e fiquem empilhados */
+    .card input[type="text"],
+    .card input[type="tel"],
+    .card input[type="date"],
+    .card select {
       width: 100%;
-      max-width: 460px;
-      border-radius: 10px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-sizing: border-box;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid #e6e6e6;
+      font-size: 16px;
+      margin-top: 6px;
     }
+
+    .card label {
+      display: block;
+      font-size: 16px;
+      margin-top: 14px;
+      color: #333;
+    }
+
+    /* ajuste do título dos cards - tamanho idêntico */
+    .card .card-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #b46973;
+      margin: 0 0 12px 0;
+      text-align: center; /* título centralizado conforme pedido */
+    }
+
+    /* botões */
+    .card .actions {
+      display:flex;
+      gap:10px;
+      justify-content:center; /* botões centralizados para ficar harmonioso */
+      margin-top:18px;
+    }
+    .card .actions .btn {
+      padding:10px 18px;
+      font-size:15px;
+      min-width: 140px;
+    }
+
+    /* modal */
+    .modal-backdrop {
+      position: fixed; inset:0;
+      background: rgba(0,0,0,0.45);
+      display: none; align-items:center; justify-content:center;
+      padding: 20px; z-index: 900;
+    }
+    .modal {
+      background:#fff; padding:18px; max-width:480px; width:100%;
+      border-radius:10px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      text-align:center;
+    }
+
+    /* mensagem de erro/aviso */
+    #msg { margin-top:10px; color:#d33; font-size:14px; text-align:center; }
+
   </style>
 </head>
 <body>
@@ -63,22 +99,18 @@
     <a href="admin/">Admin</a>
   </nav>
 
-  <!-- CONTEÚDO -->
+  <!-- MAIN -->
   <main class="page">
     <div class="site-container fade-in-up">
 
-      <!-- sem h1 no topo -->
-
       <div class="agenda-grid">
 
-        <!-- COLUNA ESQUERDA — POLÍTICA -->
+        <!-- ESQUERDA: Política -->
         <article class="card fade-in-up" style="text-align:left;">
 
-          <h2 style="margin-bottom: 16px; color:#b46973; font-size:24px; font-weight:700; text-align:center;">
-            Política de Agendamento
-          </h2>
+          <div class="card-title">Política de Agendamento</div>
 
-          <ul style="font-size:18px; line-height:1.7; color:#444; padding-left:22px; margin-top:10px;">
+          <ul style="font-size:18px; line-height:1.7; color:#444; padding-left:22px; margin-top:6px; text-align:left;">
             <li>Seguir todas as orientações da profissional garante os melhores resultados.</li>
             <li>Não utilizar rímel nas 24 horas anteriores ao procedimento.</li>
             <li>A extensão de cílios funciona em ciclos: 1 aplicação, até 3 manutenções, remoção e nova aplicação — garantindo saúde, segurança e durabilidade.</li>
@@ -88,68 +120,57 @@
 
         </article>
 
-        <!-- COLUNA DIREITA — FORMULÁRIO -->
+        <!-- DIREITA: Formulário (campos empilhados e alinhados à esquerda) -->
         <article class="card fade-in-up" style="text-align:left;">
 
-          <h2 style="margin-bottom: 16px; color:#b46973; font-size:24px; font-weight:700; text-align:center;">
-            Agendar Horário
-          </h2>
+          <div class="card-title">Agendar Horário</div>
 
-          <!-- SERVIÇO -->
-          <label style="font-size:16px;">Serviço</label>
-          <select id="servico" style="font-size:16px;">
+          <!-- Serviço -->
+          <label for="servico">Serviço</label>
+          <select id="servico" name="servico" aria-label="Serviço">
             <option value="">Selecione...</option>
-            <option>Lash Lifting</option>
-            <option>Extensão Clássica (Fio a Fio)</option>
-            <option>Volume Light</option>
-            <option>Volume Brasileiro</option>
-            <option>Volume Inglês</option>
-            <option>Volume Fox Eyes</option>
-            <option>Designer de Sobrancelhas</option>
-            <option>Hidragloss</option>
+            <option value="Lash Lifting">Lash Lifting</option>
+            <option value="Extensao Classica">Extensão Clássica (Fio a Fio)</option>
+            <option value="Volume Light">Volume Light</option>
+            <option value="Volume Brasileiro">Volume Brasileiro</option>
+            <option value="Volume Ingles">Volume Inglês</option>
+            <option value="Volume Fox Eyes">Volume Fox Eyes</option>
+            <option value="Designer Sobrancelhas">Designer de Sobrancelhas</option>
+            <option value="Hidragloss">Hidragloss</option>
           </select>
 
-          <!-- DATA -->
-          <label style="margin-top:14px; font-size:16px;">Data</label>
-          <input type="date" id="data" style="font-size:16px;">
+          <!-- Data -->
+          <label for="data">Data</label>
+          <input id="data" type="date" />
 
-          <!-- HORÁRIO -->
-          <label style="margin-top:14px; font-size:16px;">Horário</label>
-          <select id="horario" style="font-size:16px;">
+          <!-- Horário -->
+          <label for="horario">Horário</label>
+          <select id="horario" aria-label="Horário">
             <option value="">Escolha a data primeiro</option>
           </select>
 
-          <!-- NOME -->
-          <label style="margin-top:14px; font-size:16px;">Seu nome</label>
-          <input type="text" id="nome" style="font-size:16px;" placeholder="Seu nome">
+          <!-- Nome -->
+          <label for="nome">Seu nome</label>
+          <input id="nome" type="text" placeholder="Seu nome" />
 
-          <!-- TELEFONE -->
-          <label style="margin-top:14px; font-size:16px;">Telefone (WhatsApp)</label>
-          <input type="tel" id="telefone" style="font-size:16px;" placeholder="(11) 9XXXX-XXXX">
+          <!-- Telefone -->
+          <label for="telefone">Telefone (WhatsApp)</label>
+          <input id="telefone" type="tel" placeholder="(11) 9XXXX-XXXX" />
 
-          <!-- BOTÕES -->
-          <div style="margin-top:22px; display:flex; gap:10px; justify-content:center;">
-            <button id="btn-confirm" class="btn"
-              style="padding:10px 18px; font-size:15px; min-width:160px;">
-              Confirmar
-            </button>
-
-            <button id="btn-reset" class="btn"
-              style="background:#ddd; color:#222; padding:10px 18px; font-size:15px;">
-              Limpar
-            </button>
+          <!-- Ações -->
+          <div class="actions">
+            <button id="btn-confirm" class="btn">Confirmar</button>
+            <button id="btn-reset" class="btn" style="background:#ddd;color:#222;">Limpar</button>
           </div>
 
-          <div id="msg" style="margin-top:10px; color:#d33; font-size:14px;"></div>
-
+          <div id="msg"></div>
         </article>
 
       </div>
-
     </div>
   </main>
 
-  <!-- FOOTER -->
+  <!-- footer via fetch (se vc usa assim no projeto) -->
   <div id="footer"></div>
   <script>
     fetch("footer.html")
@@ -160,11 +181,10 @@
   <!-- MODAL -->
   <div class="modal-backdrop" id="modal">
     <div class="modal">
-      <h2 style="margin-bottom:8px; text-align:center;">Agendamento Confirmado</h2>
-      <p id="modalText" style="text-align:center;">Seu horário foi registrado com sucesso!</p>
-
-      <button id="btn-send-wa" class="btn" style="margin-top:10px; width:100%;">Enviar para WhatsApp</button>
-      <button id="btn-back-home" class="btn" style="margin-top:10px; background:#ddd; color:#222; width:100%;">Fechar</button>
+      <h3 id="modalTitle">Agendamento Confirmado</h3>
+      <p id="modalText">Seu horário foi registrado com sucesso.</p>
+      <button id="btn-send-wa" class="btn" style="width:100%; margin-top:8px;">Enviar WhatsApp</button>
+      <button id="btn-back-home" class="btn" style="width:100%; margin-top:8px; background:#ddd; color:#222;">Fechar</button>
     </div>
   </div>
 
@@ -188,11 +208,15 @@
     // preencher horários ao escolher a data
     dataInput.addEventListener("change", () => {
       horarioSelect.innerHTML = "";
+      if (!dataInput.value) {
+        horarioSelect.innerHTML = '<option value="">Escolha a data primeiro</option>';
+        return;
+      }
       horariosFixos.forEach(h => {
-        const o = document.createElement("option");
-        o.value = h;
-        o.textContent = h;
-        horarioSelect.appendChild(o);
+        const opt = document.createElement("option");
+        opt.value = h;
+        opt.textContent = h;
+        horarioSelect.appendChild(opt);
       });
     });
 
@@ -206,16 +230,15 @@
       msgBox.textContent = "";
     };
 
-    // verifica horário ocupado
+    // verifica horário ocupado (localStorage)
     function horarioOcupado(dataISO, hora) {
       const raw = localStorage.getItem("agendamentos_demo");
       if (!raw) return false;
-
       const arr = JSON.parse(raw);
       return arr.some(a => a.data === dataISO && a.hora === hora);
     }
 
-    // salva local
+    // salva agendamento local
     function salvarLocal(obj) {
       const raw = localStorage.getItem("agendamentos_demo");
       const arr = raw ? JSON.parse(raw) : [];
@@ -223,9 +246,8 @@
       localStorage.setItem("agendamentos_demo", JSON.stringify(arr));
     }
 
-    // confirmar agendamento
+    // confirmar
     document.getElementById("btn-confirm").onclick = () => {
-
       msgBox.textContent = "";
 
       const s = servico.value;
@@ -275,10 +297,15 @@
       };
     };
 
-    modal.onclick = e => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-  </script>
+    // fechar modal clicando fora
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    });
 
+    // esc fecha modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') modal.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
