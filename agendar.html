@@ -1,161 +1,422 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agendar Horário</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amanda Beauty — Agendar</title>
+
   <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f5f5;
-      padding: 20px;
+    :root{
+      --rose: #ff69b4;
+      --rose-dark: #ff3d9b;
+      --bg: #faf7fb;
+      --card: #ffffff;
+      --muted: #666;
+      --maxwidth: 1100px;
     }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color:#222;
+    }
+
+    /* NAV */
+    .topbar{
+      background:#111;
+      color:#fff;
+      padding:10px 20px;
+    }
+    .container{
+      max-width: var(--maxwidth);
+      margin:0 auto;
+      padding:0 16px;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .brand .logo{
+      width:44px;height:44px;border-radius:8px;
+      background:linear-gradient(135deg,var(--rose),var(--rose-dark));
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:700;
+    }
+    .menu a{
+      color:#fff;text-decoration:none;
+      margin-left:18px;font-weight:600;font-size:15px;
+    }
+
+    /* HERO */
+    .page-hero{
+      background: linear-gradient(180deg, rgba(255,214,236,0.25), transparent 60%);
+      padding:28px 0;
+      margin-bottom:10px;
+    }
+    .hero-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .hero-title{
+      font-size:22px;font-weight:700;color:#222;
+    }
+
+    /* MAIN */
+    main { padding: 20px 0 80px; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      max-width: var(--maxwidth);
+      margin:0 auto;
+      padding:0 16px;
+      align-items:start;
+    }
+
+    /* CARD */
     .card {
-      background: #fff;
-      padding: 20px;
-      margin: auto;
-      max-width: 420px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+      background: var(--card);
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(16,16,16,0.08);
     }
-    label {
-      display: block;
-      margin-top: 14px;
-      font-weight: bold;
+    .card h2{ margin:0 0 12px;font-size:20px;color:#111 }
+    label{ display:block;margin-top:12px;font-weight:600;font-size:14px;color:var(--muted) }
+    input, select{
+      width:100%; padding:12px 14px; margin-top:8px;
+      border-radius:10px; border:1px solid #e6e6e6;
+      font-size:15px; background:#fff;
     }
-    select, input {
-      width: 100%;
-      padding: 12px;
-      margin-top: 6px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
+    .row{ display:flex; gap:12px; }
+    .row .col{ flex:1 }
+
+    .btn{
+      display:inline-block;padding:12px 16px;border-radius:10px;
+      border:none;background:var(--rose);
+      color:#fff;font-weight:700;cursor:pointer;
+      font-size:16px;text-align:center;width:100%;
     }
-    button {
-      width: 100%;
-      margin-top: 20px;
-      padding: 14px;
-      background: #ff69b4;
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 18px;
-      cursor: pointer;
+    .btn.ghost{
+      background:transparent;border:1px solid #ddd;
+      color:#333;font-weight:600;
     }
-    button:hover {
-      background: #ff3d9b;
+
+    .small{ font-size:13px;color:var(--muted);margin-top:6px }
+
+    /* MODAL */
+    .modal-backdrop{
+      position:fixed;inset:0;background:rgba(0,0,0,0.35);
+      display:none;align-items:center;justify-content:center;
+      z-index:60;padding:20px;
+    }
+    .modal{
+      width:100%;max-width:520px;background:#fff;border-radius:12px;
+      padding:18px;box-shadow:0 20px 40px rgba(0,0,0,0.18);
+    }
+    .modal h3{ margin:0 0 8px }
+    .modal p{ color:var(--muted); margin:8px 0 16px }
+
+    footer{
+      margin-top:40px;background:#111;color:#fff;padding:18px 0;
+    }
+    footer .container{
+      display:flex;justify-content:space-between;align-items:center;
+    }
+
+    @media (max-width:900px){
+      .grid{ grid-template-columns: 1fr; }
+      .hero-inner{ flex-direction:column; align-items:flex-start; gap:10px }
     }
   </style>
 </head>
 <body>
 
-<div class="card">
-  <h2>Agendar Horário</h2>
+  <!-- NAV -->
+  <header class="topbar">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">AB</div>
+        <div>
+          <div style="font-weight:800">Amanda Beauty</div>
+          <div style="font-size:12px;color:#ddd">Estética & bem-estar</div>
+        </div>
+      </div>
 
-  <label>Serviço</label>
-  <select id="servico">
-    <option value="">Selecione...</option>
-    <option>Limpeza de pele</option>
-    <option>Peeling</option>
-    <option>Botox</option>
-    <option>Massagem Relaxante</option>
-  </select>
+      <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="servicos.html">Serviços</a>
+        <a href="contato.html">Contato</a>
+        <a style="text-decoration:underline" href="agenda.html">Agendar</a>
+      </nav>
+    </div>
+  </header>
 
-  <label>Data</label>
-  <input type="date" id="data">
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="hero-title">Agende seu horário</div>
+        <div style="margin-top:6px;color:var(--muted)">
+          Escolha o serviço, selecione a data e finalize com facilidade.
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <label>Horário</label>
-  <select id="horario">
-    <option value="">Escolha a data primeiro</option>
-  </select>
+  <!-- MAIN -->
+  <main>
+    <div class="grid">
 
-  <label>Seu nome</label>
-  <input type="text" id="nome">
+      <!-- INSTRUÇÕES -->
+      <section>
+        <div class="card">
+          <h2>Como funciona</h2>
+          <p style="color:var(--muted)">
+            Escolha o serviço, a data e o horário desejado. Se o horário estiver ocupado, você será avisado imediatamente.
+          </p>
 
-  <label>Telefone</label>
-  <input type="tel" id="telefone">
+          <h3 style="margin-top:16px;margin-bottom:8px">Regras Rápidas</h3>
+          <ul style="margin:0 0 0 18px;color:var(--muted)">
+            <li>Segunda a sábado</li>
+            <li>Agendar com pelo menos 2h de antecedência</li>
+            <li>Máximo de 60 dias à frente</li>
+          </ul>
+        </div>
+      </section>
 
-  <button onclick="confirmar()">Confirmar Agendamento</button>
-</div>
+      <!-- CARD DE AGENDAR -->
+      <aside>
+        <div class="card">
+          <h2>Agendar Horário</h2>
 
-<script type="module">
-  import { db } from "./firebase-config.js";
-  import { 
-    collection, addDoc, query, where, getDocs 
-  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+          <label>Serviço</label>
+          <select id="servico">
+            <option value="">Selecione...</option>
+            <option>Limpeza de pele</option>
+            <option>Peeling</option>
+            <option>Botox</option>
+            <option>Massagem Relaxante</option>
+            <option>Sobrancelha</option>
+            <option>Micropigmentação</option>
+            <option>Manicure</option>
+            <option>Design de cílios</option>
+          </select>
 
-  const servico = document.getElementById("servico");
-  const dataInput = document.getElementById("data");
-  const horarioSelect = document.getElementById("horario");
-  const nome = document.getElementById("nome");
-  const telefone = document.getElementById("telefone");
+          <div class="row" style="margin-top:6px">
+            <div class="col">
+              <label>Data</label>
+              <input type="date" id="data" />
+            </div>
 
-  const horariosFixos = ["08:00","09:00","10:00","13:00","14:00","15:00","16:00"];
+            <div class="col">
+              <label>Horário</label>
+              <select id="horario"><option>Escolha a data primeiro</option></select>
+            </div>
+          </div>
 
-  dataInput.addEventListener("change", () => {
-    horarioSelect.innerHTML = "";
-    horariosFixos.forEach(h => {
-      const opt = document.createElement("option");
-      opt.value = h;
-      opt.textContent = h;
-      horarioSelect.appendChild(opt);
+          <label>Seu nome</label>
+          <input type="text" id="nome" placeholder="Ex: Maria Silva">
+
+          <label>Telefone</label>
+          <input type="tel" id="telefone" placeholder="(11) 9xxxx-xxxx">
+
+          <div style="margin-top:14px; display:flex; gap:10px">
+            <button id="btn-confirm" class="btn">Confirmar Agendamento</button>
+            <button id="btn-reset" class="btn ghost" style="width:140px">Limpar</button>
+          </div>
+          <div id="msg" class="small"></div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" id="modal">
+    <div class="modal">
+      <h3>Agendamento Confirmado</h3>
+      <p id="modalText">Seu horário foi salvo com sucesso!</p>
+
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button id="btn-back-home" class="btn ghost">Voltar</button>
+        <button id="btn-send-wa" class="btn">Enviar WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div>© <strong>Amanda Beauty</strong> — Todos os direitos reservados</div>
+      <div style="font-size:13px;color:#ddd">
+        Sorocaba — SP
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script type="module">
+
+    // ELEMENTOS
+    const servico = document.getElementById('servico');
+    const dataInput = document.getElementById('data');
+    const horarioSelect = document.getElementById('horario');
+    const nomeInput = document.getElementById('nome');
+    const telInput = document.getElementById('telefone');
+
+    const msgBox = document.getElementById('msg');
+    const btnConfirm = document.getElementById('btn-confirm');
+    const btnReset = document.getElementById('btn-reset');
+
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modalText');
+    const btnBackHome = document.getElementById('btn-back-home');
+    const btnSendWa = document.getElementById('btn-send-wa');
+
+    const horariosFixos = ["08:00","09:00","10:00","13:00","14:00","15:00","16:00"];
+
+    const MIN_AHEAD = 2;     // horas
+    const MAX_DIAS = 60;     // dias
+
+    const phoneAmanda = "5511988802349";
+
+    function cleanPhone(str){ return (str||"").replace(/\D/g,""); }
+
+    // Preenche horários ao selecionar data
+    dataInput.addEventListener('change', () => {
+      horarioSelect.innerHTML = '';
+
+      if (!dataInput.value) {
+        horarioSelect.innerHTML = '<option>Escolha a data primeiro</option>';
+        return;
+      }
+
+      horariosFixos.forEach(h => {
+        const o = document.createElement('option');
+        o.value = h;
+        o.textContent = h;
+        horarioSelect.appendChild(o);
+      });
     });
-  });
 
-  async function confirmar() {
-    const s = servico.value;
-    const d = dataInput.value;
-    const h = horarioSelect.value;
-    const n = nome.value.trim();
-    const t = telefone.value.trim().replace(/\D/g, "");
+    // Limpar
+    btnReset.onclick = () => {
+      servico.value = '';
+      dataInput.value = '';
+      horarioSelect.innerHTML = '<option>Escolha a data primeiro</option>';
+      nomeInput.value = '';
+      telInput.value = '';
+      msgBox.textContent = '';
+    };
 
-    if (!s || !d || !h || !n || !t) {
-      alert("Preencha todos os campos!");
-      return;
+    // Checar horário ocupado (localStorage)
+    function horarioOcupado(dataISO, hora) {
+      const raw = localStorage.getItem('agendamentos_demo');
+      if (!raw) return false;
+
+      const arr = JSON.parse(raw);
+      return arr.some(a => a.data === dataISO && a.hora === hora);
     }
 
-    if (t.length < 10) {
-      alert("Telefone inválido!");
-      return;
+    // Salvar agendamento (localStorage)
+    function salvarLocal(obj) {
+      const raw = localStorage.getItem('agendamentos_demo');
+      const arr = raw ? JSON.parse(raw) : [];
+      arr.push(obj);
+      localStorage.setItem('agendamentos_demo', JSON.stringify(arr));
     }
 
-    const hoje = new Date();
-    const dataEscolhida = new Date(d + " " + h);
+    // CONFIRMAR AGENDAMENTO
+    btnConfirm.onclick = () => {
+      msgBox.textContent = '';
 
-    if (dataEscolhida < hoje) {
-      alert("Você não pode agendar para um horário no passado!");
-      return;
-    }
+      const s = servico.value;
+      const d = dataInput.value;
+      const h = horarioSelect.value;
+      const n = nomeInput.value.trim();
+      const t = cleanPhone(telInput.value);
 
-    const agRef = collection(db, "agendamentos");
-    const q = query(agRef,
-      where("data", "==", d),
-      where("hora", "==", h)
-    );
-    const snap = await getDocs(q);
+      if (!s || !d || !h || !n || !t) {
+        msgBox.textContent = "Preencha todos os campos!";
+        return;
+      }
 
-    if (!snap.empty) {
-      alert("Este horário já está ocupado!");
-      return;
-    }
+      if (t.length < 10) {
+        msgBox.textContent = "Telefone inválido!";
+        return;
+      }
 
-    await addDoc(agRef, {
-      servico: s,
-      data: d,
-      hora: h,
-      nome: n.toUpperCase(),
-      telefone: t,
-      status: "pendente",
-      criadoEm: new Date()
-    });
+      // validações de horário
+      const agora = new Date();
+      const [hh, mm] = h.split(':').map(Number);
+      const agendar = new Date(`${d}T${h}:00`);
 
-    alert("Agendamento realizado com sucesso!");
-    window.location.href = "index.html";
-  }
+      // antecedência mínima
+      const diffHoras = (agendar - agora) / (1000*60*60);
+      if (diffHoras < MIN_AHEAD) {
+        msgBox.textContent = "Agende com pelo menos 2 horas de antecedência.";
+        return;
+      }
 
-  window.confirmar = confirmar;
-</script>
+      // limite máximo
+      const maxData = new Date(agora.getTime() + MAX_DIAS*24*60*60*1000);
+      if (agendar > maxData) {
+        msgBox.textContent = `Você só pode agendar até ${MAX_DIAS} dias à frente.`;
+        return;
+      }
 
+      // horário ocupado
+      if (horarioOcupado(d, h)) {
+        msgBox.textContent = "Este horário já está ocupado!";
+        return;
+      }
+
+      // salvar
+      const ag = {
+        id: Date.now(),
+        servico: s,
+        data: d,
+        hora: h,
+        nome: n.toUpperCase(),
+        telefone: t,
+        criadoEm: new Date().toISOString()
+      };
+
+      salvarLocal(ag);
+
+      // abrir modal
+      modalText.textContent =
+        `Pronto, ${n}! Seu horário de ${s} em ${d} às ${h} foi registrado.`;
+
+      modal.style.display = 'flex';
+
+      // WhatsApp
+      const msg = encodeURIComponent(
+        `Olá Amanda! Acabei de agendar *${s}* no dia ${d} às ${h}. Meu nome é ${n} e meu telefone é ${t}.`
+      );
+
+      btnSendWa.onclick = () => {
+        window.open(`https://wa.me/${phoneAmanda}?text=${msg}`, '_blank');
+      };
+
+      btnBackHome.onclick = () => {
+        modal.style.display = 'none';
+        btnReset.click();
+      };
+    };
+
+    // fechar clicando fora
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    };
+
+  </script>
 </body>
 </html>
-
