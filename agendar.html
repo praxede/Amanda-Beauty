@@ -67,16 +67,18 @@
   <main class="page">
     <div class="site-container fade-in-up">
 
-      <h1 class="page-title">Agendar Horário</h1>
+      <!-- removido o h1 "Agendar Horário" -->
 
       <div class="agenda-grid">
 
         <!-- COLUNA ESQUERDA - POLÍTICA -->
         <article class="card fade-in-up" style="text-align:left;">
 
-          <h2 class="page-title" style="margin-bottom: 12px;">Política de Agendamento</h2>
+          <h2 style="margin-bottom: 16px; color:#b46973; font-size:24px; font-weight:700;">
+            Política de Agendamento
+          </h2>
 
-          <ul style="line-height:1.6; color:#444; padding-left:20px; margin-top:10px;">
+          <ul style="font-size:18px; line-height:1.7; color:#444; padding-left:22px; margin-top:10px;">
             <li>Seguir todas as orientações da profissional garante os melhores resultados.</li>
             <li>Não utilizar rímel nas 24 horas anteriores ao procedimento.</li>
             <li>A extensão de cílios funciona em ciclos: 1 aplicação, até 3 manutenções, remoção e nova aplicação — garantindo saúde, segurança e durabilidade.</li>
@@ -89,10 +91,12 @@
         <!-- COLUNA DIREITA - FORMULÁRIO -->
         <article class="card fade-in-up" style="text-align:left;">
 
-          <h2 class="page-title" style="margin-bottom: 12px;">Agendar Horário</h2>
+          <h2 style="margin-bottom: 16px; color:#b46973; font-size:24px; font-weight:700;">
+            Agendar Horário
+          </h2>
 
-          <label>Serviço</label>
-          <select id="servico">
+          <label style="font-size:16px;">Serviço</label>
+          <select id="servico" style="font-size:16px;">
             <option value="">Selecione...</option>
             <option>Limpeza de pele</option>
             <option>Peeling</option>
@@ -104,23 +108,31 @@
             <option>Design de cílios</option>
           </select>
 
-          <label style="margin-top: 12px;">Data</label>
-          <input type="date" id="data">
+          <label style="margin-top:14px; font-size:16px;">Data</label>
+          <input type="date" id="data" style="font-size:16px;">
 
-          <label style="margin-top: 12px;">Horário</label>
-          <select id="horario">
+          <label style="margin-top:14px; font-size:16px;">Horário</label>
+          <select id="horario" style="font-size:16px;">
             <option value="">Escolha a data primeiro</option>
           </select>
 
-          <label style="margin-top: 12px;">Seu nome</label>
-          <input type="text" id="nome" placeholder="Seu nome">
+          <label style="margin-top:14px; font-size:16px;">Seu nome</label>
+          <input type="text" id="nome" style="font-size:16px;" placeholder="Seu nome">
 
-          <label style="margin-top: 12px;">Telefone (WhatsApp)</label>
-          <input type="tel" id="telefone" placeholder="(11) 9XXXX-XXXX">
+          <label style="margin-top:14px; font-size:16px;">Telefone (WhatsApp)</label>
+          <input type="tel" id="telefone" style="font-size:16px;" placeholder="(11) 9XXXX-XXXX">
 
+          <!-- BOTÕES -->
           <div style="margin-top:20px; display:flex; gap:10px;">
-            <button class="btn" id="btn-confirm">Confirmar Agendamento</button>
-            <button class="btn" id="btn-reset" style="background:#ddd; color:#222;">Limpar</button>
+            <button id="btn-confirm" class="btn"
+              style="padding:10px 18px; font-size:15px; min-width:160px;">
+              Confirmar
+            </button>
+
+            <button id="btn-reset" class="btn"
+              style="background:#ddd; color:#222; padding:10px 18px; font-size:15px;">
+              Limpar
+            </button>
           </div>
 
           <div id="msg" style="margin-top:10px; color:#d33; font-size:14px;"></div>
@@ -206,7 +218,7 @@
       localStorage.setItem("agendamentos_demo", JSON.stringify(arr));
     }
 
-    // confirmar agendamento
+    // confirmar
     document.getElementById("btn-confirm").onclick = () => {
 
       msgBox.textContent = "";
