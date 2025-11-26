@@ -35,17 +35,25 @@ body {
 .site-header {
   background: #ffffffcc;
   backdrop-filter: blur(6px);
-  padding: 14px 0; /* ↓ menor (antes 20px) */
+  padding: 20px 0;
   border-bottom: 1px solid #eadeda;
-  position: fixed; /* ↓ fixo */
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 20;
+  z-index: 10;
 
+  /* CENTRALIZAR A LOGO */
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  font-weight: normal;
+  color: #c08f8f;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
 
@@ -58,12 +66,23 @@ nav {
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   border-bottom: 1px solid #eadeda;
-  position: fixed; /* agora fixa */
-  left: 0;
-  width: 100%;
-  z-index: 19;
-  /* Ajuste de top para não sobrepor o header sticky original */
-  top: 80px; /* mantém distância igual à que você tinha com sticky */
+  position: sticky;
+  top: 80px; 
+  z-index: 9;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #5a4a4a;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+  color: #c98e8e;
+  transform: translateY(-2px);
 }
 
 
@@ -71,8 +90,7 @@ nav {
    ÁREA DA PÁGINA
 ---------------------------*/
 .page {
-  padding-top: 160px; /* espaço para header (sticky) + nav (fixed) — ajuste fino se quiser */
-  padding-bottom: 60px;
+  padding: 60px 0;
 }
 
 
