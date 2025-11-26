@@ -90,8 +90,7 @@ nav a:hover {
    ÁREA DA PÁGINA
 ---------------------------*/
 .page {
-  padding-top: 100px;
-  padding-bottom: 60px;
+  padding: 60px 0;
 }
 
 
