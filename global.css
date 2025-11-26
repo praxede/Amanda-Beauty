@@ -35,26 +35,19 @@ body {
 .site-header {
   background: #ffffffcc;
   backdrop-filter: blur(6px);
-  padding: 20px 0;
+  padding: 14px 0; /* ↓ menor (antes 20px) */
   border-bottom: 1px solid #eadeda;
-  position: sticky;
+  position: fixed; /* ↓ fixo */
   top: 0;
-  z-index: 10;
+  left: 0;
+  width: 100%;
+  z-index: 20;
 
-  /* CENTRALIZAR A LOGO */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.logo {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
-  font-weight: normal;
-  color: #c08f8f;
-  text-decoration: none;
-  letter-spacing: 1px;
-}
 
 /* -------------------------
    NAVEGAÇÃO
@@ -65,24 +58,13 @@ nav {
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   border-bottom: 1px solid #eadeda;
-  position: sticky;
-  top: 80px; 
-  z-index: 9;
+  position: fixed;        /* fixo */
+  top: 60px;              /* gruda logo abaixo do header MENOR */
+  left: 0;
+  width: 100%;
+  z-index: 19;
 }
 
-nav a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #5a4a4a;
-  font-weight: 700;
-  font-size: 1rem;
-  transition: color 0.3s, transform 0.2s;
-}
-
-nav a:hover {
-  color: #c98e8e;
-  transform: translateY(-2px);
-}
 
 /* -------------------------
    ÁREA DA PÁGINA
