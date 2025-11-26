@@ -58,11 +58,12 @@ nav {
   text-align: center;
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   border-bottom: 1px solid #eadeda;
-  position: fixed;        /* fixo */
-  top: 60px;              /* gruda logo abaixo do header MENOR */
+  position: fixed; /* agora fixa */
   left: 0;
   width: 100%;
   z-index: 19;
+  /* Ajuste de top para não sobrepor o header sticky original */
+  top: 80px; /* mantém distância igual à que você tinha com sticky */
 }
 
 
@@ -70,8 +71,8 @@ nav {
    ÁREA DA PÁGINA
 ---------------------------*/
 .page {
-  padding-top: 140px; /* empurra o conteúdo pra baixo do header + nav fixos */
-  padding-bottom: 60px; /* mantém o espaçamento inferior */
+  padding-top: 160px; /* espaço para header (sticky) + nav (fixed) — ajuste fino se quiser */
+  padding-bottom: 60px;
 }
 
 
