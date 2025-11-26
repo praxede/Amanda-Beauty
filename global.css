@@ -70,8 +70,10 @@ nav {
    ÁREA DA PÁGINA
 ---------------------------*/
 .page {
-  padding: 60px 0;
+  padding-top: 140px; /* empurra o conteúdo pra baixo do header + nav fixos */
+  padding-bottom: 60px; /* mantém o espaçamento inferior */
 }
+
 
 .card {
   background: #fff;
