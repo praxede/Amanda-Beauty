@@ -232,3 +232,60 @@ nav a:hover {
     height: 140px;
   }
 }
+
+
+/* GRID DOS SERVIÇOS */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* CARD */
+.service-card {
+  background: #ffffff10; 
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 0 10px #00000040;
+  text-align: justify;
+}
+
+/* TÍTULOS */
+.service-card h2 {
+  text-align: center;
+  margin-bottom: 12px;
+  color: #ffb6c1;
+}
+
+/* IMAGENS */
+.service-card img {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1100px) {
+  .service-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+
