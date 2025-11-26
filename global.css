@@ -35,7 +35,7 @@ body {
 .site-header {
   background: #ffffffcc;
   backdrop-filter: blur(6px);
-  padding: 8px 0;
+  padding: 15px 0;
   border-bottom: 1px solid #eadeda;
   position: sticky;
   top: 0;
