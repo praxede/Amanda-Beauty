@@ -29,7 +29,7 @@
     .card label {
       display: block;
       font-size: 16px;
-      font-weight: 600; /* NEGRITO */
+      font-weight: 600;
       margin-top: 14px;
       color: #333;
     }
@@ -51,10 +51,6 @@
       color: #b46973;
       margin: 0 0 12px 0;
       text-align: center;
-    }
-
-    .card.card-agendar {
-      text-align: justify;
     }
 
     /* Botões */
@@ -129,11 +125,9 @@
           <ul style="font-size:18px; line-height:1.7; color:#444; padding-left:22px; margin-top:6px;">
             <li>É essencial seguir todas as orientações fornecidas pela profissional para garantir um resultado seguro e satisfatório.</li>
             <li>Evite utilizar qualquer tipo de rímel nas 24 horas anteriores ao procedimento.</li>
-            <li>A extensão de cílios ocorre em ciclos: aplicação inicial, até três manutenções, remoção e nova aplicação, preservando a saúde dos fios naturais.</li>
-            <li>A tolerância de atraso é de até 10 minutos. Após esse período, o atendimento poderá ser reagendado.</li>
+            <li>A extensão de cílios ocorre em ciclos: aplicação inicial, até três manutenções, remoção e nova aplicação.</li>
+            <li>A tolerância de atraso é de até 10 minutos.</li>
             <li>Para cancelamentos ou remarcações, pedimos aviso com antecedência mínima de 24 horas.</li>
-            <li>Clientes que realizam manutenção dentro do prazo têm maior durabilidade e melhor acabamento.</li>
-            <li>Por segurança, não realizamos procedimentos em caso de irritação ocular, alergias ativas ou infecções.</li>
           </ul>
 
         </article>
@@ -201,8 +195,13 @@
     </div>
   </div>
 
-  <!-- SCRIPT -->
-  <script>
+  <!-- FIREBASE + SCRIPT PRINCIPAL -->
+  <script type="module">
+    import { db } from "./firebase-config.js";
+    import {
+      collection, addDoc, query, where, getDocs
+    } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
     const servico = document.getElementById("servico");
     const dataInput = document.getElementById("data");
     const horarioSelect = document.getElementById("horario");
@@ -248,7 +247,7 @@
       });
     });
 
-    // limpar
+    // botão limpar
     document.getElementById("btn-reset").onclick = () => {
       servico.value = "";
       dataInput.value = "";
@@ -258,21 +257,19 @@
       msgBox.textContent = "";
     };
 
-    // salvar local
-    function salvarLocal(obj) {
-      const lista = JSON.parse(localStorage.getItem("agendamentos_demo") || "[]");
-      lista.push(obj);
-      localStorage.setItem("agendamentos_demo", JSON.stringify(lista));
+    // verificar se horário está ocupado no Firebase
+    async function ocupado(data, hora) {
+      const q = query(
+        collection(db, "agendamentos"),
+        where("data", "==", data),
+        where("hora", "==", hora)
+      );
+      const snap = await getDocs(q);
+      return !snap.empty;
     }
 
-    // verificar ocupado
-    function ocupado(data, hora) {
-      const arr = JSON.parse(localStorage.getItem("agendamentos_demo") || "[]");
-      return arr.some(a => a.data === data && a.hora === hora);
-    }
-
-    // confirmar
-    document.getElementById("btn-confirm").onclick = () => {
+    // CONFIRMAR AGENDAMENTO
+    document.getElementById("btn-confirm").onclick = async () => {
       msgBox.textContent = "";
 
       const s = servico.value;
@@ -289,34 +286,37 @@
         msgBox.textContent = "Telefone inválido.";
         return;
       }
-      if (ocupado(d,h)) {
+
+      if (await ocupado(d, h)) {
         msgBox.textContent = "Este horário já está ocupado.";
         return;
       }
 
-      salvarLocal({
-        id: Date.now(),
+      // salva no FIREBASE
+      await addDoc(collection(db, "agendamentos"), {
         servico: s,
         data: d,
         hora: h,
         nome: n.toUpperCase(),
         telefone: t,
+        status: "pendente",
         criadoEm: new Date().toISOString()
       });
 
       modalText.innerHTML = `Seu horário de <b>${s}</b> foi agendado para <b>${formatarData(d)}</b> às <b>${h}</b>.`;
-
       modal.style.display = "flex";
 
       const mensagem = encodeURIComponent(
-        `Olá Amanda! Agendei *${s}* para ${d} às ${h}. Meu nome é ${n}.`
+        `Olá Amanda! Agendei *${s}* para ${formatarData(d)} às ${h}. Meu nome é ${n}.`
       );
 
       btnSendWa.onclick = () => {
         window.open(`https://wa.me/${phoneAmanda}?text=${mensagem}`, "_blank");
       };
 
-      btnBackHome.onclick = () => { modal.style.display = "none"; };
+      btnBackHome.onclick = () => {
+        modal.style.display = "none";
+      };
     };
 
     modal.addEventListener("click", e => {
@@ -327,8 +327,6 @@
       const [ano, mes, dia] = d.split("-");
       return `${dia}/${mes}/${ano}`;
     }
-
-    
   </script>
 
 </body>
