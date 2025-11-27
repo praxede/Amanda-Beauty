@@ -1,16 +1,16 @@
-// CONFIGURAÇÃO DO FIREBASE
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+// CONFIGURAÇÃO DO FIREBASE - AMANDA BEAUTY
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCmEQl0LAcrZ0uio-DYYknD-NrrvFN1RjI",
-  authDomain: "fila-online-7b900.firebaseapp.com",
-  projectId: "fila-online-7b900",
-  storageBucket: "fila-online-7b900.firebasestorage.app",
-  messagingSenderId: "797876819240",
-  appId: "1:797876819240:web:034a70c5e804ab0440ac1d"
+  apiKey: "AIzaSyDgmpOSFwPiOXIPV_B0EszZxe0sH7hy3Ng",
+  authDomain: "amanda-beauty.firebaseapp.com",
+  projectId: "amanda-beauty",
+  storageBucket: "amanda-beauty.firebasestorage.app",
+  messagingSenderId: "262393343130",
+  appId: "1:262393343130:web:969c80f28f32eb025a0323"
 };
 
+// Inicialização
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
-
