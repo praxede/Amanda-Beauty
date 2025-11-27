@@ -35,7 +35,7 @@ body {
 .site-header {
   background: #ffffffcc;
   backdrop-filter: blur(6px);
-  padding: 5px 0;
+  padding: 8px 0;
   border-bottom: 1px solid #eadeda;
   position: sticky;
   top: 0;
@@ -49,11 +49,12 @@ body {
 
 .logo {
   font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: normal;
   color: #c08f8f;
   text-decoration: none;
   letter-spacing: 1px;
+  line-height: 1;
 }
 
 
