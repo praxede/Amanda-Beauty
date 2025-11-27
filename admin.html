@@ -152,13 +152,13 @@
             <td>
               <button class="confirmar">Confirmar</button>
               <button class="atendido">Atendido</button>
-              <button class="falta">Falta</button>
+              <button class="falta">Faltou</button>
             </td>
           `;
 
           tr.querySelector(".confirmar").onclick = () => atualizar(docItem.id, "Confirmado");
           tr.querySelector(".atendido").onclick = () => atualizar(docItem.id, "Atendido");
-          tr.querySelector(".falta").onclick = () => atualizar(docItem.id, "Falta");
+          tr.querySelector(".falta").onclick = () => atualizar(docItem.id, "Faltou");
 
           lista.appendChild(tr);
         });
