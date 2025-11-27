@@ -118,6 +118,13 @@
     const dataInput = document.getElementById("data");
     const lista = document.getElementById("lista");
 
+    // Função para formatar o telefone
+    function formatarTelefone(t) {
+      if (!t) return "";
+      t = t.toString().replace(/\D/g, "");
+      return `(${t.slice(0,2)}) ${t.slice(2,7)}-${t.slice(7)}`;
+    }
+
     // Quando escolher uma data → carregar agendamentos
     dataInput.addEventListener("change", () => {
       carregarAgenda(dataInput.value);
@@ -143,7 +150,7 @@
           const tr = document.createElement("tr");
           tr.innerHTML = `
             <td>${a.hora}</td>
-            <td>${a.nome} <br> <small>${a.telefone}</small></td>
+            <td>${a.nome} <br> <small>${formatarTelefone(a.telefone)}</small></td>
             <td>${a.servico}</td>
             <td>${a.status}</td>
             <td>
