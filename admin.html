@@ -50,6 +50,8 @@
   </style>
 
 </head>
+
+  
 <body>
 
   <header class="site-header">
@@ -173,4 +175,15 @@
   </script>
 
 </body>
+
+<script>
+  const senha = prompt("Digite a senha para acessar o Admin:");
+
+  if (senha !== "admindev") {
+    alert("Senha incorreta!");
+    window.location.href = "index.html"; // ou outra página de saída
+  }
+</script>
+
+  
 </html>
