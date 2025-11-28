@@ -92,7 +92,7 @@ nav a:hover {
 ---------------------------*/
 .page {
   padding: 20px 0;
-  min-height: calc(100vh - 120px); /* área útil da página */
+  min-height: calc(100vh - 200px); /* área útil da página */
   display: flex;
   justify-content: center;  /* centraliza VERTICALMENTE */
   align-items: center;      /* centraliza HORIZONTALMENTE */
