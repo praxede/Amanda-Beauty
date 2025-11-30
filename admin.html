@@ -237,9 +237,9 @@
 
 <div id="login-overlay">
   <div id="login-box">
-    <h3>Acesso Restrito</h3>
-    <h3>Informe a senha temporária (unisaads) para acessar o menu "Admin"</h3>
-    <input type="password" id="senhaInput" placeholder="Digite a senha">
+    <!-- <h3>Acesso Restrito</h3> -->
+    <h3>Informe a senha temporária (unisa) para acessar o menu "Admin"</h3>
+    <input type="password" id="senhaInput" placeholder="Digite a senha (unisa)">
     <button onclick="verificarSenha()">Entrar</button>
     <div id="erroSenha">Senha incorreta!</div>
   </div>
@@ -249,7 +249,7 @@
   function verificarSenha() {
     const senha = document.getElementById("senhaInput").value;
 
-    if (senha === "admindev") {
+    if (senha === "unisa") {
       document.getElementById("login-overlay").style.display = "none";
     } else {
       document.getElementById("erroSenha").style.display = "block";
