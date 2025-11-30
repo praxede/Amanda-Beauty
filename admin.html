@@ -176,12 +176,81 @@
 
 </body>
 
-<script>
-  const senha = prompt("Digite a senha para acessar o Admin:");
+<style>
+  
+  #login-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+  }
 
-  if (senha !== "admindev") {
-    alert("Senha incorreta!");
-    window.location.href = "index.html"; // ou outra página de saída
+  #login-box {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 280px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  #login-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  #login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #333;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  #login-box button:hover {
+    background: #000;
+  }
+
+  #erroSenha {
+    display: none;
+    color: red;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+</style>
+
+<div id="login-overlay">
+  <div id="login-box">
+    <h3>Acesso Restrito</h3>
+    <input type="password" id="senhaInput" placeholder="Digite a senha">
+    <button onclick="verificarSenha()">Entrar</button>
+    <div id="erroSenha">Senha incorreta!</div>
+  </div>
+</div>
+
+<script>
+  function verificarSenha() {
+    const senha = document.getElementById("senhaInput").value;
+
+    if (senha === "admindev") {
+      document.getElementById("login-overlay").style.display = "none";
+    } else {
+      document.getElementById("erroSenha").style.display = "block";
+    }
   }
 </script>
 
