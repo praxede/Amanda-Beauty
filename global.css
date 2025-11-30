@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 
-/* =========================
-   RESET E BASE
-   ========================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,18 +18,14 @@ body {
   line-height: 1.7;
 }
 
-/* -------------------------
-   CONTAINERS E LAYOUT
----------------------------*/
+/* -------------------------CONTAINERS E LAYOUT---------------------------*/
 .site-container {
   width: 90%;
   max-width: 1100px;
   margin: auto;
 }
 
-/* -------------------------
-   CABEÇALHO
----------------------------*/
+/* -------------------------CABEÇALHO---------------------------*/
 .site-header {
   background: #ffffffcc;
   backdrop-filter: blur(6px);
@@ -58,9 +52,7 @@ body {
 }
 
 
-/* -------------------------
-   NAVEGAÇÃO
----------------------------*/
+/* -------------------------NAVEGAÇÃO---------------------------*/
 nav {
   background: #ffffff;
   padding: 12px 0;
@@ -87,16 +79,14 @@ nav a:hover {
 }
 
 
-/* -------------------------
-   ÁREA DA PÁGINA
----------------------------*/
+/* -------------------------ÁREA DA PÁGINA--------------------------*/
 .page {
   padding: 30px 0;
-  min-height: calc(100vh - 300px); /* área útil da página */
+  min-height: calc(100vh - 300px); 
   display: flex;
-  justify-content: center;  /* centraliza VERTICALMENTE */
-  align-items: center;      /* centraliza HORIZONTALMENTE */
-  flex-direction: column;   /* garante que os itens fiquem em coluna */
+  justify-content: center;  
+  align-items: center;      
+  flex-direction: column;   
 }
 
 .card {
@@ -113,8 +103,8 @@ nav a:hover {
   width: 250px;        /* tamanho grande do círculo */
   height: 250px;
   border-radius: 50%;
-  object-fit: cover;   /* preenche o círculo */
-  object-position: center; /* rosto centralizado */
+  object-fit: cover;   
+  object-position: center; 
   margin-bottom: 25px;
   border: 4px solid #e7d3d3;
 }
@@ -134,9 +124,7 @@ nav a:hover {
   color: #5a4a4a;
 }
 
-/* -------------------------
-   BOTÕES
----------------------------*/
+/* -------------------------BOTÕES--------------------------*/
 .btn {
   display: inline-block;
   padding: 12px 26px;
@@ -166,9 +154,7 @@ nav a:hover {
   color: #fff;
 }
 
-/* -------------------------
-   FOOTER
----------------------------*/
+/* -------------------------FOOTER---------------------------*/
 .site-footer {
   text-align: center;
   padding: 25px 0;
@@ -200,9 +186,7 @@ nav a:hover {
   filter: invert(28%) sepia(20%) saturate(900%) hue-rotate(330deg) brightness(95%) contrast(95%);
 }
 
-/* -------------------------
-   ANIMAÇÕES
----------------------------*/
+/* -------------------------ANIMAÇÕES---------------------------*/
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -212,9 +196,7 @@ nav a:hover {
   animation: fade-in 0.8s ease forwards;
 }
 
-/* -------------------------
-   RESPONSIVIDADE
----------------------------*/
+/* -------------------------RESPONSIVIDADE---------------------------*/
 @media (max-width: 600px) {
 
   nav a {
